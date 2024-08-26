@@ -5,7 +5,6 @@ import com.fchazal.fdj.inject.androidModule
 import com.fchazal.fdj.inject.applicationModule
 import com.fchazal.fdj.inject.dataSourceModule
 import com.fchazal.fdj.inject.repositoryModule
-import com.fchazal.fdj.inject.serviceModule
 import com.fchazal.fdj.inject.useCaseModule
 import com.fchazal.fdj.inject.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -22,7 +21,6 @@ class FDJApplication : Application() {
             modules(
                 androidModule,
                 applicationModule,
-                serviceModule,
                 repositoryModule,
                 dataSourceModule,
                 viewModelModule,

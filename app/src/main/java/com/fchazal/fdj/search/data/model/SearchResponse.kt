@@ -12,5 +12,5 @@ data class SearchResponseItem(
 
 @Keep
 data class SearchResponse(
-    val searchItems: List<SearchResponseItem>,
+    val leagues: List<SearchResponseItem>,
 )

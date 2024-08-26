@@ -1,5 +1,7 @@
 package com.fchazal.fdj.inject
 
+import com.fchazal.fdj.league.domain.interactor.GetLeaguesUseCase
+import com.fchazal.fdj.league.domain.interactor.GetLeaguesUseCaseImpl
 import com.fchazal.fdj.search.domain.interactor.FilterSearchUseCase
 import com.fchazal.fdj.search.domain.interactor.FilterSearchUseCaseImpl
 import com.fchazal.fdj.search.domain.interactor.GetSearchUseCase
@@ -14,5 +16,10 @@ val useCaseModule = module {
     }
     factory<FilterSearchUseCase> {
         FilterSearchUseCaseImpl()
+    }
+    factory<GetLeaguesUseCase> {
+        GetLeaguesUseCaseImpl(
+            repository = get()
+        )
     }
 }

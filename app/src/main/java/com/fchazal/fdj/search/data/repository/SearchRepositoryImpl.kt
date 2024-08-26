@@ -18,7 +18,7 @@ class SearchRepositoryImpl(
         dataSource.getSearchResults().fold(
             onSuccess = {
                 SearchResult.Success(
-                    it.searchItems.toSearchItemBlockUI()
+                    it.leagues.toSearchItemListBlockUI()
                 )
             },
             onFailure = {
@@ -27,7 +27,7 @@ class SearchRepositoryImpl(
         )
     }
 
-    fun List<SearchResponseItem>.toSearchItemBlockUI(): List<SearchItemBlockUI> = map {
+    fun List<SearchResponseItem>.toSearchItemListBlockUI(): List<SearchItemBlockUI> = map {
         it.toSearchItemBlockUI()
     }
 

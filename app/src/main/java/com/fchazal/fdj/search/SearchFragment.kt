@@ -19,6 +19,8 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import com.fchazal.fdj.R
+import com.fchazal.fdj.league.LeagueFragment
 import com.fchazal.fdj.search.presentation.view.SearchLeagueScreen
 import com.fchazal.fdj.ui.theme.FDJTheme
 import kotlinx.coroutines.CoroutineScope
@@ -92,13 +94,10 @@ class SearchFragment() : Fragment() {
     private fun onSearchItemClick(itemId: String) {
         parentFragmentManager.commit {
             addToBackStack(null)
-            //TODO
-            // replace(
-            //     R.id.main_layout,
-            //     DetailLeagueFragment().apply {
-            //         arguments = DetailLeagueParameter(leagueId).asBundle()
-            //     }
-            // )
+            replace(
+                R.id.main_layout,
+                LeagueFragment.getInstance(itemId)
+            )
         }
     }
 }
