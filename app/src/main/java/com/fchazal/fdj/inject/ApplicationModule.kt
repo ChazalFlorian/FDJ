@@ -1,14 +1,13 @@
 package com.fchazal.fdj.inject
 
 import android.util.Log
-import com.fchazal.fdj.search.data.datasource.LeagueService
+import com.fchazal.fdj.search.data.datasource.SearchService
 import com.skydoves.retrofit.adapters.result.ResultCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 val applicationModule = module {
 
@@ -27,6 +26,6 @@ val applicationModule = module {
             .client(okHttpBuilder)
             .build()
 
-        retrofit.create(LeagueService::class.java)
+        retrofit.create(SearchService::class.java)
     }
 }

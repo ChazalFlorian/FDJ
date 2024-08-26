@@ -8,12 +8,12 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.fchazal.fdj.search.presentation.model.LeagueBlockUI
+import com.fchazal.fdj.search.presentation.model.SearchItemBlockUI
 
 @Composable
-fun LeagueList(
-    leagues: List<LeagueBlockUI>,
-    onLeagueClick: (String) -> Unit
+fun SearchResultList(
+    items: List<SearchItemBlockUI>,
+    onItemClick: (String) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier
@@ -21,11 +21,11 @@ fun LeagueList(
             .fillMaxHeight()
             .fillMaxWidth()
     ) {
-        itemsIndexed(leagues) { key, league ->
-            LeagueItem(
-                league = league,
+        itemsIndexed(items) { key, item ->
+            SearchItem(
+                search = item,
                 isEven = key % 2 == 0,
-                onLeagueClick = { onLeagueClick(league.league) })
+                onItemClick = { onItemClick(item.league) })
         }
     }
 }

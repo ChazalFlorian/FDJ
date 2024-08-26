@@ -3,7 +3,7 @@ package com.fchazal.fdj.search.data.model
 import androidx.annotation.Keep
 
 @Keep
-data class LeagueResponseItem(
+data class SearchResponseItem(
     val idLeague: String,
     val strLeague: String,
     val strSport: String,
@@ -11,6 +11,6 @@ data class LeagueResponseItem(
 )
 
 @Keep
-data class LeagueResponse(
-    val leagues: List<LeagueResponseItem>,
+data class SearchResponse(
+    val searchItems: List<SearchResponseItem>,
 )

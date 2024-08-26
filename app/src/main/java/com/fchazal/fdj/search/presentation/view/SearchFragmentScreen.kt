@@ -8,18 +8,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.fchazal.fdj.search.SearchLeagueState
+import com.fchazal.fdj.search.SearchResultState
 
 @Composable
 fun SearchLeagueScreen(
-    state: SearchLeagueState,
-    onLeagueClick: (String) -> Unit
+    state: SearchResultState,
+    onSearchItemClick: (String) -> Unit
     ) {
     when(state) {
-        is SearchLeagueState.Error -> {
+        is SearchResultState.Error -> {
             Text(text = "An error was thrown, please refresh view or restart app")
         }
-        SearchLeagueState.Loading -> {
+        SearchResultState.Loading -> {
             CircularProgressIndicator(
                 modifier = Modifier
                     .padding(42.dp)
@@ -27,8 +27,8 @@ fun SearchLeagueScreen(
                     .fillMaxHeight()
             )
         }
-        is SearchLeagueState.Success -> {
-            LeagueList(leagues = state.searchResults, onLeagueClick = onLeagueClick)
+        is SearchResultState.Success -> {
+            SearchResultList(items = state.searchResults, onItemClick = onSearchItemClick)
         }
     }
 }

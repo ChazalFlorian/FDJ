@@ -7,7 +7,7 @@ import org.koin.dsl.module
 val dataSourceModule = module {
     single<SearchDataSource> {
         SearchDataSourceImpl(
-            leagueService = get()
+            searchService = get()
         )
     }
 }

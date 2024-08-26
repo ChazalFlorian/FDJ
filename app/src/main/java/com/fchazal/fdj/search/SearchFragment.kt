@@ -33,7 +33,7 @@ class SearchFragment() : Fragment() {
     override fun onResume() {
         super.onResume()
         CoroutineScope(Dispatchers.IO).launch {
-            viewModel.getLeagues()
+            viewModel.getSearchResults()
         }
     }
 
@@ -58,13 +58,13 @@ class SearchFragment() : Fragment() {
                                 onQueryChange = {
                                     query.value = it
                                     CoroutineScope(Dispatchers.Main).launch {
-                                        viewModel.filterLeagues(it)
+                                        viewModel.filterSearchResults(it)
                                     }
                                 },
                                 onSearch = {
                                     query.value = it
                                     CoroutineScope(Dispatchers.IO).launch {
-                                        viewModel.filterLeagues(it)
+                                        viewModel.filterSearchResults(it)
                                     }
                                 },
                                 active = true,
@@ -79,8 +79,8 @@ class SearchFragment() : Fragment() {
                     ) {
                         SearchLeagueScreen(
                             state = viewModel.state.collectAsState().value,
-                            onLeagueClick = {
-                                onLeagueClick(it)
+                            onSearchItemClick = {
+                                onSearchItemClick(it)
                             }
                         )
                     }
@@ -89,7 +89,7 @@ class SearchFragment() : Fragment() {
         }
     }
 
-    private fun onLeagueClick(leagueId: String) {
+    private fun onSearchItemClick(itemId: String) {
         parentFragmentManager.commit {
             addToBackStack(null)
             //TODO

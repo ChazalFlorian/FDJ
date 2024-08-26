@@ -7,8 +7,8 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel {
         SearchViewModel(
-            getLeagueUseCase = get(),
-            filterLeagueUseCase = get()
+            getSearchUseCase = get(),
+            filterSearchUseCase = get()
         )
     }
 }

@@ -10,18 +10,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.fchazal.fdj.search.presentation.model.LeagueBlockUI
+import com.fchazal.fdj.search.presentation.model.SearchItemBlockUI
 
 @Composable
-fun LeagueItem(
-    league: LeagueBlockUI,
+fun SearchItem(
+    search: SearchItemBlockUI,
     isEven: Boolean = false,
-    onLeagueClick: (String) -> Unit,
+    onItemClick: (String) -> Unit,
 ) {
     Box(
         modifier = Modifier
             .clickable {
-                onLeagueClick(league.league)
+                onItemClick(search.league)
             }
             .fillMaxWidth()
             .background(
@@ -35,7 +35,7 @@ fun LeagueItem(
         Text(
             modifier = Modifier
                 .padding(vertical = 8.dp),
-            text = league.league
+            text = search.league
         )
     }
 }

@@ -2,56 +2,56 @@ package com.fchazal.fdj.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fchazal.fdj.search.domain.interactor.FilterLeagueUseCase
-import com.fchazal.fdj.search.domain.interactor.GetLeagueUseCase
-import com.fchazal.fdj.search.domain.model.LeagueResult
-import com.fchazal.fdj.search.presentation.model.LeagueBlockUI
+import com.fchazal.fdj.search.domain.interactor.FilterSearchUseCase
+import com.fchazal.fdj.search.domain.interactor.GetSearchUseCase
+import com.fchazal.fdj.search.domain.model.SearchResult
+import com.fchazal.fdj.search.presentation.model.SearchItemBlockUI
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-sealed class SearchLeagueState {
-    data object Loading : SearchLeagueState()
+sealed class SearchResultState {
+    data object Loading : SearchResultState()
 
-    class Error(val exception: String) : SearchLeagueState()
+    class Error(val exception: String) : SearchResultState()
 
-    class Success(val searchResults: List<LeagueBlockUI>) : SearchLeagueState()
+    class Success(val searchResults: List<SearchItemBlockUI>) : SearchResultState()
 }
 
 class SearchViewModel(
-    private val getLeagueUseCase: GetLeagueUseCase,
-    private val filterLeagueUseCase: FilterLeagueUseCase
+    private val getSearchUseCase: GetSearchUseCase,
+    private val filterSearchUseCase: FilterSearchUseCase
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow<SearchLeagueState>(SearchLeagueState.Loading)
-    private val _allLeaguesState = MutableStateFlow<SearchLeagueState>(SearchLeagueState.Loading)
-    val state: StateFlow<SearchLeagueState> = _allLeaguesState.asStateFlow()
+    private val _state = MutableStateFlow<SearchResultState>(SearchResultState.Loading)
+    private val _allSearchResultsState = MutableStateFlow<SearchResultState>(SearchResultState.Loading)
+    val state: StateFlow<SearchResultState> = _allSearchResultsState.asStateFlow()
 
-    suspend fun getLeagues() {
+    suspend fun getSearchResults() {
         viewModelScope.launch {
-            when (val result = getLeagueUseCase.getLeagues()) {
-                is LeagueResult.Error -> {
-                    _allLeaguesState.emit(SearchLeagueState.Error(result.error))
+            when (val result = getSearchUseCase.getSearchResults()) {
+                is SearchResult.Error -> {
+                    _allSearchResultsState.emit(SearchResultState.Error(result.error))
                 }
 
-                is LeagueResult.Success -> {
-                    _state.emit(SearchLeagueState.Success(result.leagueList))
-                    _allLeaguesState.emit(SearchLeagueState.Success(result.leagueList))
+                is SearchResult.Success -> {
+                    _state.emit(SearchResultState.Success(result.searchList))
+                    _allSearchResultsState.emit(SearchResultState.Success(result.searchList))
                 }
             }
         }
     }
 
-    fun filterLeagues(query : String) {
-        if(state.value is SearchLeagueState.Success) {
+    fun filterSearchResults(query : String) {
+        if(state.value is SearchResultState.Success) {
             viewModelScope.launch {
-                when(val result = filterLeagueUseCase.filterLeagues(query, (_state.value as SearchLeagueState.Success).searchResults)) {
-                    is LeagueResult.Error -> {
-                        _allLeaguesState.emit(SearchLeagueState.Error(result.error))
+                when(val result = filterSearchUseCase.filterSearch(query, (_state.value as SearchResultState.Success).searchResults)) {
+                    is SearchResult.Error -> {
+                        _allSearchResultsState.emit(SearchResultState.Error(result.error))
                     }
-                    is LeagueResult.Success -> {
-                        _allLeaguesState.emit(SearchLeagueState.Success(result.leagueList))
+                    is SearchResult.Success -> {
+                        _allSearchResultsState.emit(SearchResultState.Success(result.searchList))
                     }
                 }
             }
