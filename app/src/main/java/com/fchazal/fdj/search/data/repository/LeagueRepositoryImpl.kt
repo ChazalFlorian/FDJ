@@ -4,7 +4,7 @@ import com.fchazal.fdj.search.data.datasource.SearchDataSource
 import com.fchazal.fdj.search.data.model.LeagueResponseItem
 import com.fchazal.fdj.search.domain.model.LeagueResult
 import com.fchazal.fdj.search.domain.repository.LeagueRepository
-import com.fchazal.fdj.search.presentation.model.LeagueBlocUI
+import com.fchazal.fdj.search.presentation.model.LeagueBlockUI
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -27,11 +27,11 @@ class LeagueRepositoryImpl(
         )
     }
 
-    fun List<LeagueResponseItem>.toListLeagueBlockUI(): List<LeagueBlocUI> = map {
+    fun List<LeagueResponseItem>.toListLeagueBlockUI(): List<LeagueBlockUI> = map {
         it.toLeagueBlockUI()
     }
 
-    private fun LeagueResponseItem.toLeagueBlockUI(): LeagueBlocUI = LeagueBlocUI(
+    private fun LeagueResponseItem.toLeagueBlockUI(): LeagueBlockUI = LeagueBlockUI(
         id = idLeague,
         league = strLeague,
         sport = strSport,

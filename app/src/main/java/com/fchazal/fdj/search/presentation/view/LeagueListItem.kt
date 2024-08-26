@@ -10,11 +10,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.fchazal.fdj.search.presentation.model.LeagueBlocUI
+import com.fchazal.fdj.search.presentation.model.LeagueBlockUI
 
 @Composable
 fun LeagueItem(
-    league: LeagueBlocUI,
+    league: LeagueBlockUI,
     isEven: Boolean = false,
     onLeagueClick: (String) -> Unit,
 ) {

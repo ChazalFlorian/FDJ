@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.fchazal.fdj.search.domain.interactor.FilterLeagueUseCase
 import com.fchazal.fdj.search.domain.interactor.GetLeagueUseCase
 import com.fchazal.fdj.search.domain.model.LeagueResult
-import com.fchazal.fdj.search.presentation.model.LeagueBlocUI
+import com.fchazal.fdj.search.presentation.model.LeagueBlockUI
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,7 +16,7 @@ sealed class SearchLeagueState {
 
     class Error(val exception: String) : SearchLeagueState()
 
-    class Success(val searchResults: List<LeagueBlocUI>) : SearchLeagueState()
+    class Success(val searchResults: List<LeagueBlockUI>) : SearchLeagueState()
 }
 
 class SearchViewModel(

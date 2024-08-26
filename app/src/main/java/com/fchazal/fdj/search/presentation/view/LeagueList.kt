@@ -8,11 +8,11 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.fchazal.fdj.search.presentation.model.LeagueBlocUI
+import com.fchazal.fdj.search.presentation.model.LeagueBlockUI
 
 @Composable
 fun LeagueList(
-    leagues: List<LeagueBlocUI>,
+    leagues: List<LeagueBlockUI>,
     onLeagueClick: (String) -> Unit
 ) {
     LazyColumn(
