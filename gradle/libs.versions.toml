@@ -1,0 +1,69 @@
+[versions]
+android-arch-core = '2.2.0'
+android-core = '1.13.1'
+dagger = '2.50'
+lifecycle-runtime = "2.8.4"
+activity = "1.9.1"
+fragment-ktx = "1.8.2"
+compose-bom = '2023.08.00'
+compose-livedata = '1.6.8'
+retrofit = '2.9.0'
+retrofit-logging = '4.12.0'
+coroutine-core = '1.7.1'
+coroutine-android = '1.7.3'
+coroutine-test = '1.7.0'
+inject = '1'
+glide = '1.0.0-beta01'
+junit = '4.13.2'
+mockk = '1.13.9'
+ext-junit = '1.2.1'
+espresso-core = '3.6.1'
+
+[libraries]
+
+dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
+core-ktx = { module = "androidx.core:core-ktx", version.ref = "android-core" }
+core-common = { module = "androidx.arch.core:core-common", version.ref = "android-arch-core" }
+core-runtime = { module = "androidx.arch.core:core-runtime", version.ref = "android-arch-core" }
+core-testing = { module = "androidx.arch.core:core-testing", version.ref = "android-arch-core" }
+lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle-runtime" }
+activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
+fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment-ktx" }
+activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity" }
+compose-platform = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
+compose-ui = { module = "androidx.compose.ui:ui" }
+compose-graphics = { module = "androidx.compose.ui:ui-graphics" }
+compose-tooling = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose-material = { module = "androidx.compose.material3:material3" }
+compose-runtime-livedata = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "compose-livedata" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-gson-converter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+retrofit-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "retrofit-logging" }
+coroutine-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutine-core" }
+coroutine-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutine-android" }
+coroutine-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutine-test" }
+inject = { module = "javax.inject:javax.inject", version.ref = "inject" }
+glide = { module = "com.github.bumptech.glide:compose", version.ref = "glide" }
+junit = { module = "junit:junit", version.ref = "junit" }
+junit-compose = { module = "androidx.compose.ui:ui-test-junit4" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+junit-test = { module = "androidx.compose.ui:ui-test-junit4" }
+ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+ext-junit = { module = "androidx.test.ext:junit", version.ref = "ext-junit" }
+espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso-core" }
+
+[bundles]
+dagger = ["dagger"]
+compiler = ["dagger-compiler"]
+core = ["core-ktx", "core-common", "core-runtime", "core-testing", "lifecycle-runtime"]
+ui = ["activity-ktx", "fragment-ktx"]
+retrofit = ["retrofit", "retrofit-gson-converter", "retrofit-logging"]
+coroutine = ["coroutine-core", "coroutine-android"]
+misc = ["inject", "glide"]
+debug = ["ui-tooling", "ui-test-manifest"]
+compose = ["compose-ui", "compose-graphics", "compose-material", "compose-platform", "compose-runtime-livedata", "activity-compose", "compose-tooling"]
+androidtest = ["ext-junit", "espresso-core", "junit-test"]
+test = ["junit", "mockk", "coroutine-test"]
+
