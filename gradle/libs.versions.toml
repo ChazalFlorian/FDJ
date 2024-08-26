@@ -1,7 +1,6 @@
 [versions]
 android-arch-core = '2.2.0'
 android-core = '1.13.1'
-dagger = '2.50'
 lifecycle-runtime = "2.8.4"
 activity = "1.9.1"
 fragment-ktx = "1.8.2"
@@ -18,11 +17,13 @@ junit = '4.13.2'
 mockk = '1.13.9'
 ext-junit = '1.2.1'
 espresso-core = '3.6.1'
+koin = "4.0.0-RC1"
+material3-android = "1.2.1"
+retrofit-adapters = "1.0.12"
 
 [libraries]
-
-dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
-dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin"}
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "android-core" }
 core-common = { module = "androidx.arch.core:core-common", version.ref = "android-arch-core" }
 core-runtime = { module = "androidx.arch.core:core-runtime", version.ref = "android-arch-core" }
@@ -35,7 +36,6 @@ compose-platform = { module = "androidx.compose:compose-bom", version.ref = "com
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-graphics = { module = "androidx.compose.ui:ui-graphics" }
 compose-tooling = { module = "androidx.compose.ui:ui-tooling-preview" }
-compose-material = { module = "androidx.compose.material3:material3" }
 compose-runtime-livedata = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "compose-livedata" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-gson-converter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
@@ -53,17 +53,18 @@ ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 ext-junit = { module = "androidx.test.ext:junit", version.ref = "ext-junit" }
 espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso-core" }
+retrofit-adapter = { module = "com.github.skydoves:retrofit-adapters-result", version.ref = "retrofit-adapters" }
+material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3-android" }
 
 [bundles]
-dagger = ["dagger"]
-compiler = ["dagger-compiler"]
+koin = ["koin-android"]
 core = ["core-ktx", "core-common", "core-runtime", "core-testing", "lifecycle-runtime"]
 ui = ["activity-ktx", "fragment-ktx"]
-retrofit = ["retrofit", "retrofit-gson-converter", "retrofit-logging"]
+retrofit = ["retrofit", "retrofit-gson-converter", "retrofit-logging", "retrofit-adapter"]
 coroutine = ["coroutine-core", "coroutine-android"]
 misc = ["inject", "glide"]
 debug = ["ui-tooling", "ui-test-manifest"]
-compose = ["compose-ui", "compose-graphics", "compose-material", "compose-platform", "compose-runtime-livedata", "activity-compose", "compose-tooling"]
+compose = ["compose-ui", "compose-graphics", "material3-android", "compose-platform", "compose-runtime-livedata", "activity-compose", "compose-tooling"]
 androidtest = ["ext-junit", "espresso-core", "junit-test"]
-test = ["junit", "mockk", "coroutine-test"]
+test = ["junit", "mockk", "coroutine-test", "koin-test"]
 

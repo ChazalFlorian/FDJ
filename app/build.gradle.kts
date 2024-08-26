@@ -53,14 +53,14 @@ android {
 }
 
 dependencies {
-    kapt(libs.bundles.compiler)
-    implementation(libs.bundles.dagger)
+    implementation(libs.bundles.koin)
     implementation(libs.bundles.core)
     implementation(libs.bundles.ui)
     implementation(libs.bundles.retrofit)
     implementation(libs.bundles.coroutine)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.misc)
+    implementation(libs.material3.android)
     testImplementation(libs.bundles.test)
     androidTestImplementation(libs.bundles.androidtest)
     debugImplementation(libs.bundles.debug)
