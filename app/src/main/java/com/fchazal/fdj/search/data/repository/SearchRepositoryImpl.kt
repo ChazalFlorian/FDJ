@@ -27,7 +27,7 @@ class SearchRepositoryImpl(
         )
     }
 
-    fun List<SearchResponseItem>.toSearchItemListBlockUI(): List<SearchItemBlockUI> = map {
+    private fun List<SearchResponseItem>.toSearchItemListBlockUI(): List<SearchItemBlockUI> = map {
         it.toSearchItemBlockUI()
     }
 
