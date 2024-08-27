@@ -32,7 +32,7 @@ class LeagueRepositoryImpl(
     }
 
     private fun TeamResponse.toLeagueItemBlockUI() = LeagueItemBlockUI(
-        logoUrl = strTeamLogo?: "",
+        logoUrl = strLogo?: "",
         description = strDescriptionFR ?: ""
     )
 

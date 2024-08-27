@@ -65,7 +65,7 @@ data class TeamResponse(
     val strCountry: String,
     val strTeamBadge: String,
     val strTeamJersey: String,
-    val strTeamLogo: String?,
+    val strLogo: String?,
     val strTeamFanart1: String,
     val strTeamFanart2: String,
     val strTeamFanart3: String,
